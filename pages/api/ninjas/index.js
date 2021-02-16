@@ -1,7 +1,6 @@
 // local data
 import { ninjas } from '../../../data'
 import fs from 'fs'
-import path from 'path'
 
 export default async (req, res) => {
 // module.exports = (req, res) => {  
@@ -17,7 +16,7 @@ export default async (req, res) => {
         // const ninjas = JSON.parse(fs.readFileSync('data.json'))
         // res.json(ninjas) 
 
-        fs.readFile('data.json', (err, data) => {
+        fs.readFile('/data.json', (err, data) => {
           if (err) throw err
       
           const ninjas = JSON.parse(data)
@@ -38,7 +37,7 @@ export default async (req, res) => {
         //   body: JSON.stringify({ name, email, website, city })
         // })
 
-        const ninjas = JSON.parse(fs.readFileSync('data.json'))
+        const ninjas = JSON.parse(fs.readFileSync('/data.json'))
         ninjas.push({ id, name, email, website, city })
         // ninjas.push(req.body)
 
