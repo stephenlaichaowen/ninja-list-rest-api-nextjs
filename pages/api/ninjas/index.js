@@ -3,8 +3,8 @@ import { ninjas } from '../../../data'
 import fs from 'fs'
 import path from 'path'
 
-// export default async (req, res) => {
-module.exports = (req, res) => {  
+export default async (req, res) => {
+// module.exports = (req, res) => {  
   const { method } = req
 
   switch (method) {
