@@ -23,7 +23,7 @@ export default async (req, res) => {
         //   res.json(ninja)   
         // })
         
-        const ninjas = JSON.parse(fs.readFileSync('/data.json'))        
+        const ninjas = JSON.parse(fs.readFileSync('data.json'))        
         const ninja = ninjas.find(ninja => ninja.id === req.query.id)
         // console.log(ninja)
         res.json(ninja) 
@@ -36,11 +36,11 @@ export default async (req, res) => {
       const { name, email, website, city } = req.body
 
       try {
-        const ninjas = JSON.parse(fs.readFileSync('/data.json'))
+        const ninjas = JSON.parse(fs.readFileSync('data.json'))
         ninjas.push({ id, name, email, website, city })
         // ninjas.push(req.body)
 
-        fs.writeFile('/data.json', JSON.stringify(ninjas, null, 2), (err) => {
+        fs.writeFile('data.json', JSON.stringify(ninjas, null, 2), (err) => {
           if (err) throw err;
           console.log('Data written to file');
         });
@@ -64,13 +64,13 @@ export default async (req, res) => {
         })
         */
 
-        fs.readFile('/data.json', (err, data) => {
+        fs.readFile('data.json', (err, data) => {
           if (err) throw err
       
           let ninjas = JSON.parse(data)              
           ninjas = ninjas.filter(ninja => ninja.id !== req.query.id)
 
-          fs.writeFile('/data.json', JSON.stringify(ninjas, null, 2), (err) => {
+          fs.writeFile('data.json', JSON.stringify(ninjas, null, 2), (err) => {
             if (err) throw err;
             console.log('Data written to file');
           });
