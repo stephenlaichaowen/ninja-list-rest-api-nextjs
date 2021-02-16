@@ -11,7 +11,8 @@ import Link from 'next/link'
 // export const getStaticProps = async () => {
 export const getServerSideProps = async () => {
   // const res = await fetch('https://jsonplaceholder.typicode.com/users')
-  const res = await fetch('http://localhost:3000/api/ninjas')
+  // const res = await fetch('http://localhost:3000/api/ninjas')
+  const res = await fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas')
   const data = await res.json()
 
   return {

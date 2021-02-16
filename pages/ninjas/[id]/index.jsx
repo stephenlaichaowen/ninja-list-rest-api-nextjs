@@ -22,7 +22,8 @@ export const getServerSideProps = async ({ params }) => {
   const id = params.id
   // console.log(`id: ${id}`)
   // const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id)
-  const res = await fetch('http://localhost:3000/api/ninjas/' + id)
+  // const res = await fetch('http://localhost:3000/api/ninjas/' + id)
+  const res = await fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + id)
   const data = await res.json()
 
   // fetch('http://localhost:3000/api/ninjas/' + id)
@@ -45,7 +46,8 @@ const Details = ({ ninja }) => {
   }
 
   const handleDelete = () => {
-    fetch('http://localhost:3000/api/ninjas/' + ninja.id, {
+    // fetch('http://localhost:3000/api/ninjas/' + ninja.id, {
+    fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + ninja.id, {
       method: 'DELETE'
     })
       .then(res => res.json())
