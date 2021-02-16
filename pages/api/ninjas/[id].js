@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 
 export default async (req, res) => {
 // module.exports = (req, res) => {
@@ -24,7 +25,8 @@ export default async (req, res) => {
         //   res.json(ninja)   
         // })
         
-        const ninjas = JSON.parse(fs.readFileSync('data.json'))        
+        // const ninjas = JSON.parse(fs.readFileSync('data.json'))        
+        const ninjas = JSON.parse(fs.readFileSync(path.resolve('./public/data.json')))        
         const ninja = ninjas.find(ninja => ninja.id === req.query.id)
         // console.log(ninja)
         res.json(ninja) 
@@ -37,7 +39,8 @@ export default async (req, res) => {
       const { name, email, website, city } = req.body
 
       try {
-        const ninjas = JSON.parse(fs.readFileSync('data.json'))
+        // const ninjas = JSON.parse(fs.readFileSync('data.json'))
+        const ninjas = JSON.parse(fs.readFileSync(path.resolve('./public/data.json')))
         ninjas.push({ id, name, email, website, city })
         // ninjas.push(req.body)
 
@@ -65,7 +68,8 @@ export default async (req, res) => {
         })
         */
 
-        fs.readFile('data.json', (err, data) => {
+        // fs.readFile('data.json', (err, data) => {
+        fs.readFile(path.resolve('./public/data.json'), (err, data) => {
           if (err) throw err
       
           let ninjas = JSON.parse(data)              
