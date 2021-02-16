@@ -1,7 +1,7 @@
 import fs from 'fs'
 
-// export default async (req, res) => {
-module.exports = (req, res) => {
+export default async (req, res) => {
+// module.exports = (req, res) => {
   const { method } = req
 
   switch (method) {
