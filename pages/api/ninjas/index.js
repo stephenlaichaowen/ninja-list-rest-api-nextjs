@@ -43,7 +43,7 @@ export default async (req, res) => {
         ninjas.push({ id, name, email, website, city })
         // ninjas.push(req.body)
 
-        fs.writeFile('data.json', JSON.stringify(ninjas, null, 2), (err) => {
+        fs.writeFile(path.resolve('./public/data.json'), JSON.stringify(ninjas, null, 2), (err) => {
           if (err) throw err;
           console.log('Data written to file');
         });
