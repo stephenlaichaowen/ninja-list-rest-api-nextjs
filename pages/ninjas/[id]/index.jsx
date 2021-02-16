@@ -47,7 +47,8 @@ const Details = ({ ninja }) => {
 
   const handleDelete = () => {
     // fetch('http://localhost:3000/api/ninjas/' + ninja.id, {
-    fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + ninja.id, {
+    // fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + ninja.id, {
+    fetch(`${process.env.PRODUCTION}/ninjas/${ninja.id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
