@@ -12,16 +12,15 @@ export default async (req, res) => {
         // const ninjas = await result.json()
         // res.json(ninjas)     
 
-        const ninjas = JSON.parse(fs.readFileSync('/data.json'))
-        res.json(ninjas) 
+        // const ninjas = JSON.parse(fs.readFileSync('/data.json'))
+        // res.json(ninjas) 
 
-        // fs.readFile('data.json', (err, data) => {
-        //   if (err) throw err
+        fs.readFile('/data.json', (err, data) => {
+          if (err) throw err
       
-        //   const ninjas = JSON.parse(data)
-        //   // console.log(ninjas)
-        //   res.json(ninjas) 
-        // })
+          const ninjas = JSON.parse(data)
+          res.json(ninjas) 
+        })
 
       } catch (error) {
         res.json({ msg: error })
@@ -41,7 +40,7 @@ export default async (req, res) => {
         ninjas.push({ id, name, email, website, city })
         // ninjas.push(req.body)
 
-        fs.writeFile('data.json', JSON.stringify(ninjas, null, 2), (err) => {
+        fs.writeFile('/data.json', JSON.stringify(ninjas, null, 2), (err) => {
           if (err) throw err;
           console.log('Data written to file');
         });

@@ -40,7 +40,7 @@ export default async (req, res) => {
         ninjas.push({ id, name, email, website, city })
         // ninjas.push(req.body)
 
-        fs.writeFile('data.json', JSON.stringify(ninjas, null, 2), (err) => {
+        fs.writeFile('/data.json', JSON.stringify(ninjas, null, 2), (err) => {
           if (err) throw err;
           console.log('Data written to file');
         });
@@ -64,7 +64,7 @@ export default async (req, res) => {
         })
         */
 
-        fs.readFile('data.json', (err, data) => {
+        fs.readFile('/data.json', (err, data) => {
           if (err) throw err
       
           let ninjas = JSON.parse(data)              
