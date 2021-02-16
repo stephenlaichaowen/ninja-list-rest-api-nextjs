@@ -12,7 +12,7 @@ export default async (req, res) => {
         // const ninjas = await result.json()
         // res.json(ninjas)     
 
-        const ninjas = JSON.parse(fs.readFileSync('data.json'))
+        const ninjas = JSON.parse(fs.readFileSync('/data.json'))
         res.json(ninjas) 
 
         // fs.readFile('data.json', (err, data) => {
@@ -37,7 +37,7 @@ export default async (req, res) => {
         //   body: JSON.stringify({ name, email, website, city })
         // })
 
-        const ninjas = JSON.parse(fs.readFileSync('data.json'))
+        const ninjas = JSON.parse(fs.readFileSync('/data.json'))
         ninjas.push({ id, name, email, website, city })
         // ninjas.push(req.body)
 
