@@ -16,7 +16,8 @@ export default function Create() {
     const ninja = { id: Date.now().toString(), name, email, website, city }
     console.log(ninja)
 
-    fetch('http://localhost:3000/api/ninjas', {
+    // fetch('http://localhost:3000/api/ninjas', {
+    fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(ninja)

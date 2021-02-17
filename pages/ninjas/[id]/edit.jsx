@@ -4,7 +4,8 @@ import { useState } from 'react'
 export const getServerSideProps = async ({ params }) => {
   const id = params.id
 
-  const res = await fetch(`http://localhost:3000/api/ninjas/${id}`)
+  // const res = await fetch(`http://localhost:3000/api/ninjas/${id}`)
+  const res = await fetch(`https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/${id}`)
   const data = await res.json()
 
   return {
@@ -28,7 +29,8 @@ export default function Edit({ ninja }) {
 
     const ninja = { name, email, website, city }
     
-    fetch(`http://localhost:3000/api/ninjas/${ninja.id}`, {
+    // fetch(`http://localhost:3000/api/ninjas/${ninja.id}`, {
+    fetch(`https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/${ninja.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(ninja)
