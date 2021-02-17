@@ -4,25 +4,13 @@ import fs from 'fs'
 import path from 'path'
 
 export default async (req, res) => {
-// module.exports = (req, res) => {  
   const { method } = req
 
   switch (method) {
     case 'GET':
       try {
-        // const result = await fetch('https://jsonplaceholder.typicode.com/users')
-        // const ninjas = await result.json()
-        // res.json(ninjas)     
-
-        // const ninjas = JSON.parse(fs.readFileSync('data.json'))
-        // res.json(ninjas) 
-
-        fs.readFile(path.resolve('./public/data.json'), (err, data) => {
-          if (err) throw err
-      
-          const ninjas = JSON.parse(data)
-          res.json(ninjas) 
-        })
+        const ninjas = JSON.parse(fs.readFileSync('data.json'))
+        res.json(ninjas) 
 
       } catch (error) {
         res.json({ msg: error })
@@ -30,28 +18,21 @@ export default async (req, res) => {
       break
     case 'POST':
       const { id, name, email, website, city } = req.body
+      console.log(req.body)
 
       try {
-        // await fetch('https://jsonplaceholder.typicode.com/users', {
-        //   method: 'POST',
-        //   headers: { '': 'application/json' },
-        //   body: JSON.stringify({ name, email, website, city })
-        // })
-
-        // const ninjas = JSON.parse(fs.readFileSync('data.json'))
-        const ninjas = JSON.parse(fs.readFileSync(path.resolve('./public/data.json')))
+        const ninjas = JSON.parse(fs.readFileSync('data.json'))
+        // const ninjas = JSON.parse(fs.readFileSync(path.resolve('./public/data.json')))
         ninjas.push({ id, name, email, website, city })
-        // ninjas.push(req.body)
+        console.log(ninjas)
 
-        fs.writeFile(path.resolve('./public/data.json'), JSON.stringify(ninjas, null, 2), (err) => {
+        // fs.writeFile(path.resolve('./public/data.json'), JSON.stringify(ninjas, null, 2), (err) => {
+        fs.writeFile('data.json', JSON.stringify(ninjas, null, 2), (err) => {
           if (err) throw err;
           console.log('Data written to file');
-        });
 
-        res.json({ 
-          ninja: req.body,
-          msg: 'write data successfully' 
-        })
+          res.json({ msg: 'write data successfully' })
+        });
       } catch (error) {
         res.json({ msg: error })
       }

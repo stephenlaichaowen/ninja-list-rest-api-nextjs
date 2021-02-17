@@ -14,9 +14,9 @@ export default function Create() {
     e.preventDefault()
 
     const ninja = { id: Date.now().toString(), name, email, website, city }
-    // console.log(ninja)
+    console.log(ninja)
 
-    fetch(`${process.env.PRODUCTION}/ninjas`, {
+    fetch('http://localhost:3000/api/ninjas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(ninja)
