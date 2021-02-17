@@ -21,8 +21,9 @@ import { useState } from 'react'
 // export const getStaticProps = async ({ params }) => {
 export const getServerSideProps = async ({ params }) => {
   const id = params.id
+  const res = await fetch('https://ninja-list-rest-api-nextjs.glitch.me/api/ninjas/' + id)
   // const res = await fetch('http://localhost:3000/api/ninjas/' + id)
-  const res = await fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + id)
+  // const res = await fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + id)
   const data = await res.json()
 
   return {
@@ -47,14 +48,14 @@ const Details = ({ ninja }) => {
   }
 
   const handleDelete = () => {
+    fetch('https://ninja-list-rest-api-nextjs.glitch.me/api/ninjas/' + ninja.id, {
     // fetch('http://localhost:3000/api/ninjas/' + ninja.id, {
-    fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + ninja.id, {
+    // fetch('https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/' + ninja.id, {
       method: 'DELETE'
     })
       .then(res => res.json())
-      .then(data => {
-        const { msg } = data
-        console.log(msg)
+      .then(data => {        
+        console.log(data)
         router.push('/')
       })
   }
@@ -64,8 +65,9 @@ const Details = ({ ninja }) => {
 
     const ninja = { id, name, email, website, city }
 
+    fetch(`https://ninja-list-rest-api-nextjs.glitch.me/api/ninjas/${ninja.id}`, {
     // fetch(`http://localhost:3000/api/ninjas/${ninja.id}`, {
-    fetch(`https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/${ninja.id}`, {
+    // fetch(`https://ninja-list-rest-api-nextjs.vercel.app/api/ninjas/${ninja.id}`, {
       method: 'PUT',
       // method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
